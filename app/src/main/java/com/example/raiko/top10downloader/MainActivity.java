@@ -94,6 +94,8 @@ public class MainActivity extends AppCompatActivity {
                     if (charsRead > 0) {
                         xmlPath.append(String.copyValueOf(inputBuffer, 0, charsRead));
                     }
+
+                    // Closes the buffer reader, and other stream methods (InputStream, StreamReader, etc)
                     bufferedReader.close();
 
 
@@ -108,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.e(TAG, "downloadXML: IOException reading data " + e.getMessage());
             } catch (SecurityException e) {
                 Log.e(TAG, "downloadXML: Security Exception? Need Permission? " + e.getMessage());
+//                e.printStackTrace();
             }
             return null;
         }
