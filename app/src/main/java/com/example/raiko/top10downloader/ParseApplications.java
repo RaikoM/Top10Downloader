@@ -1,7 +1,5 @@
 package com.example.raiko.top10downloader;
 
-import android.util.Log;
-
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
@@ -47,7 +45,7 @@ public class ParseApplications {
                 switch (eventType) {
                     // waiting for parser to reach a tag, which it will at some point (maybe not at start).. If != Entry tag then keep parsing
                     case XmlPullParser.START_TAG:
-                        Log.d(TAG, "parse: Starting tag for " + tagName);
+                      //  Log.d(TAG, "parse: Starting tag for " + tagName);
                         // If parser is inside Entry (one of top 10 apps info) then setting inEntry to true and creating a new instance of FeedEntry
                         if ("entry".equalsIgnoreCase(tagName)){
                             inEntry = true;
@@ -59,7 +57,7 @@ public class ParseApplications {
                         textValue = xpp.getText();
                         break;
                     case XmlPullParser.END_TAG:
-                        Log.d(TAG, "parse: Ending tag for " + tagName);
+                     //   Log.d(TAG, "parse: Ending tag for " + tagName);
 
                         // Look for specific tags inside entry and send the text inside those tags to new instance of FeedEntry created before (currentRecord)
                         if (inEntry) {
@@ -85,10 +83,10 @@ public class ParseApplications {
                 // Goes on to the next event type until another event happens.. .Next() sees START_TAG (<), TEXT, END_TAG (/>), END_DOCUMENT
                 eventType = xpp.next();
             }
-            for (FeedEntry app : applications) {
-                Log.d(TAG, "**************************");
-                Log.d(TAG, app.toString());
-            }
+//            for (FeedEntry app : applications) {
+//                Log.d(TAG, "**************************");
+//                Log.d(TAG, app.toString());
+//            }
 
         } catch (Exception e) {
             status = false;
