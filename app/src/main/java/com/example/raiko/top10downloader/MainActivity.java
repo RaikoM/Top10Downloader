@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             Log.d(TAG, "onPostExecute: parameter is " + s);
+            ParseApplications parseApplications = new ParseApplications();
+            parseApplications.parse(s);
         }
 
 
@@ -82,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
                 int charsRead;
                 // Initialize buffer char array to 500 chars in length.
-                char[] inputBuffer = new char[500];
+                char[] inputBuffer = new char[5000];
 
                 // loops until there is data from InputStream
                 while (true) {
@@ -96,12 +98,13 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     // Closes the buffer reader, and other stream methods (InputStream, StreamReader, etc)
-                    bufferedReader.close();
+//                    bufferedReader.close();
 
 
                     // Converts stringbuilder char sequence to string
                     return xmlPath.toString();
                 }
+                bufferedReader.close();
             } catch (MalformedURLException e) {
                 // Catch the http url exception (subclass of IOexception)
                 Log.e(TAG, "downloadXML: Invalid URL " + e.getMessage());

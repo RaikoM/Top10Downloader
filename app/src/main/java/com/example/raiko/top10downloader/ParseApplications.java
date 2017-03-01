@@ -85,7 +85,10 @@ public class ParseApplications {
                 // Goes on to the next event type until another event happens.. .Next() sees START_TAG (<), TEXT, END_TAG (/>), END_DOCUMENT
                 eventType = xpp.next();
             }
-
+            for (FeedEntry app : applications) {
+                Log.d(TAG, "**************************");
+                Log.d(TAG, app.toString());
+            }
 
         } catch (Exception e) {
             status = false;
